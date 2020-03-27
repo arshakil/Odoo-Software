@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_booking_card"
+        string="Booking Card"
+        model="sample.samplebooking"
+        report_type="qweb-pdf"
+        name="ar_sample.report_booking"
+        file="ar_sample.report_booking"/>
+
+
+        
+</odoo>

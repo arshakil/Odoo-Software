@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ar_leave_request,access.leave.type_off,model_leave_type_off,,1,1,1,1
+access_leave_request,access.leave.request,model_leave_request,,1,1,1,1

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- begin -->
+
+<!-- views -->
+
+<!-- form views begin -->
+        <record id="ar_puchase_form" model="ir.ui.view">
+            <field name="name">ar_purchase.request.form</field>
+            <field name="model">ar_purchase.request</field>
+            <field name="arch" type="xml">
+            <form string="mar_churchase Form">
+            <!--  -->
+
+            <header>
+                    <button name="" type="object" string="Send by Email" class="oe_highlight"/>
+                    <button name="" type="object" string="Sent to be approved"/>
+                    <button name="" type="object" string="done"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sentto_be_approved,manage_approved,rejected,done" readonly="1"/>
+            </header>
+
+            <sheet>
+                <group>
+                <group>
+                    <field name="ref_no"/>
+                    <field name="approver_name"/>
+                </group>
+                <group>
+	                <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+                </group>
+
+                <notebook>
+                        <page string="products">
+                        <field name="product_request_lines">
+                            <tree editable="bottom">
+                                <field name="product_title"/>
+                                <field name="product_description"/>
+                                <field name="product_qty"/>
+                                <field name="reqst_date"/>
+                                <field name="purchase_request_id" invisible="1"/>
+                            </tree>
+                            <form>
+                                <group>
+                                        <group>
+                                            <field name="product_title"/>
+                                            <field name="product_description"/>
+                                            <field name="product_qty"/>
+                                            <field name="reqst_date"/>
+                                            <field name="purchase_request_id" invisible="1"/>
+                                        </group>
+                                </group>
+                            </form>
+                        </field>
+                        </page>
+                         <page string="Description"></page>
+                        <page string="Other Information"></page>
+                </notebook>
+              </sheet>
+
+
+
+                <!--  -->
+                <!-- for chatter view should add dependancy mail -->
+              <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+                <!-- end chatter view -->
+                </form>
+            </field>
+        </record>
+<!-- form view end -->
+
+
+
+
+
+<!-- Tree views begin -->
+        <record id="ar_purchase_tree" model="ir.ui.view">
+            <field name="name">ar_purchase.request.tree</field>
+            <field name="model">ar_purchase.request</field>
+            <field name="arch" type="xml">
+            <tree string="products tree">
+                <field name="ref_no"/>
+                <field name="approver_name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+
+            </tree>   
+            </field>
+        </record>
+<!-- Tree view end -->
+
+
+<!-- end views -->
+
+
+<!-- action of the manufacturer menu -->
+   <record id="action_purchase_request" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ar_purchase.request</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <!-- for default search -->
+            <!-- <field name="context">{"search_default_male":1}</field> -->
+            <!--  -->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+               Create First product !
+              </p>
+            </field>
+    </record>
+
+
+
+
+
+<!-- MenuItems -->
+<menuitem id="purchase_root" name="Purchase New" sequence="1" web_icon="ar_purchase,static/description/icon.png"/>
+<menuitem id="purchase_request" name="Purchase Request" parent="purchase_root" action="action_purchase_request" sequence="1"/>
+<!-- <menuitem id="sample_manufacturer2" name="Manufacturer2" parent="sample_root" action="action_manufacturer" sequence="2"/> -->
+
+
+<!-- end document  -->
+</odoo> 

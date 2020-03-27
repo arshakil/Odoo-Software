@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="sample_purchese_inherit_view_extends" model="ir.ui.view">
+		<field name="name">purchase.order.form.sample.view</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+            <xpath expr="//button[@name='button_cancel']"  position="after">
+				<button name="" string="STEP 1" class="oe_highlight"/>
+                <button name="" string="STEP 2" class="oe_highlight"/>
+			</xpath>
+            <xpath expr="//field[@name='partner_ref']"  position="replace">
+				<field name="ref_no"/>
+			</xpath>
+
+            <xpath expr="//field[@name='currency_id']"  position="attributes">
+				<attribute name="attrs">{'invisible': 1}</attribute>
+			</xpath>
+            <!-- <xpath expr="//field[@name='partner_id']"  position="attributes">
+                <attribute name="attrs">{'invisible': 1, 'required': False}</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='date_order']"  position="attributes">
+                <attribute name="attrs">{'invisible': 1, 'required': False}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='state']"  position="replace">
+				<field name="state" widget="statusbar" statusbar_visible="draft,step1,step2,sent,purchase" readonly="1"/>
+			</xpath>
+
+        </field>
+    </record>
+</odoo>

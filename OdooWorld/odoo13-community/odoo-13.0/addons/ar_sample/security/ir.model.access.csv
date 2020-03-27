@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sample_manufacturer,access.sample.manufacturer,model_sample_manufacturer,,1,1,1,1
+access_sample_productgenerator,access.sample.productgenerator,model_sample_productgenerator,,1,1,1,1
+access_sample_samplebooking,access.sample.samplebooking,model_sample_samplebooking,,1,1,1,1

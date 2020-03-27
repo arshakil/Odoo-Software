@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- begin -->
+
+<!-- views -->
+
+<!-- form views begin -->
+        <record id="samplebooking_form" model="ir.ui.view">
+            <field name="name">sample.samplebooking.form</field>
+            <field name="model">sample.samplebooking</field>
+            <field name="arch" type="xml">
+
+            <form string="samplebooking Form">
+            <!--  -->
+            <sheet>
+                <group>
+                <group>
+                <field name="sa_no"/>
+                <field name="sa_date"/>
+                <field name="ppd"/>
+                <field name="customer_name"/>
+				<field name="buyer_name"/>
+                </group>
+                <group>
+                <field name="sales_person"/>
+				<field name="revised_on"/>
+				<field name="style"/>
+                <field name="season"/>
+                </group>
+                </group>
+
+
+            <notebook>
+                        <page string="Sample Booking">
+                        <field name="samplebooking_lines">
+                            <tree editable="bottom">
+                                <field name="product_code"/>
+                                <!-- <field name="product_title" attrs="{'readonly':False}" options="{'no_create': True, 'no_create_edit':True}"/> -->
+                                <field name="items_and_materials" options=""/>
+                                <field name="size"/>
+                                <field name="shape"/>
+                                <field name="logo"/>
+                                <field name="logo_ref"/>
+                                <field name="logo_type"/>
+                                <field name="finish"/>
+                                <field name="finish_ref"/>
+                                <field name="part_b"/>
+                                <field name="qty"/>
+                                <field name="mold_set"/>
+                                <field name="booking_id" invisible="1"/>
+
+                            </tree>
+
+
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="product_code"/>
+                                        <!-- <field name="product_title"/> -->
+                                        <field name="items_and_materials"/>
+                                        <field name="size"/>
+                                        <field name="shape"/>
+                                        <field name="qty"/>
+                                        <field name="mold_set"/>
+
+
+                                        <field name="booking_id" invisible="1"/>
+                                    </group>
+                                </group>
+                            </form>
+
+
+                        </field>
+                        </page>
+                        <page string="Others">
+                            
+                        </page>
+                </notebook>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </sheet>
+                <!--  -->
+                <!-- for chatter view should add dependancy mail -->
+              <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+
+                <!-- end chatter view -->
+                </form>
+            </field>
+        </record>
+<!-- form view end -->
+
+
+
+
+
+<!-- Tree views begin -->
+        <record id="mplebooking_tree" model="ir.ui.view">
+            <field name="name">sample.samplebooking.tree</field>
+            <field name="model">sample.samplebooking</field>
+            <field name="arch" type="xml">
+            <tree string="products tree">
+                <field name="sa_no"/>
+
+                <field name="samplebooking_lines"/>
+
+                <field name="sa_date"/>
+                <field name="ppd"/>
+                <field name="customer_name"/>
+				<field name="buyer_name"/>
+				<field name="sales_person"/>
+				<field name="revised_on"/>
+				<field name="style"/>
+                 <field name="season"/>
+            </tree>   
+            </field>
+        </record>
+<!-- Tree view end -->
+
+
+<!-- end views -->
+
+
+<!-- action of the manufacturer menu -->
+   <record id="action_smplebooking" model="ir.actions.act_window">
+            <field name="name">Product Booking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sample.samplebooking</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <!-- for default search -->
+            <!-- <field name="context">{"search_default_male":1}</field> -->
+            <!--  -->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+               Create First product Booking !
+              </p>
+            </field>
+    </record>
+
+
+
+
+
+<!-- MenuItems -->
+
+<menuitem id="sample_samplebooking" name="Product Booking" parent="sample_root" action="action_smplebooking" sequence="4"/>
+
+
+
+<!-- end document  -->
+</odoo> 

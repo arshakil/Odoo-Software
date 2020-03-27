@@ -1,0 +1,80 @@
+1.Use the following command at your system's command prompt to install the postgresql package:
+$sudo apt-get install postgresql
+
+2.The default superuser for PostgreSQL is called postgres. You may need to login as this user first.
+$sudo su postgres
+
+3.Now create PostgreSQL user openerp using the following command: db_user--> openerp (you can change it)
+$createuser openerp
+4.You can find the table template1, run the following command to use this table:
+$psql template1
+5.To apply access rights to the role openerp for the database which will be created from OpenERP Client, use the following command:db_password--> postgres(you can change it)
+$alter role openerp with password 'postgres';
+
+6. Give All pemission (openerp is your db name) exit from postgres then type this cmd
+$sudo -u postgres psql -c 'alter user openerp with createdb' postgres
+
+[Optional]
+7. Drop User
+postgres=# DROP USER odoo11;
+
+
+
+###### odoo-server.conf setup #####
+
+
+[options]
+; This is the password that allows database operations
+;admin_passwd = odoo
+db_host = localhost
+db_port = 5432
+db_user = odoo10
+db_password = 123456
+addons_path = /home/arshakil/Downloads/OdooWorld/odoo-10.0/addons,/home/arshakil/Downloads/OdooWorld/odoo-10.0/custom_addons,
+xmlrpc_port = 8010
+;http_port = 8010
+
+
+
+
+
+
+########## check odoo port #######
+xmlrpc_port = 8070
+$ps aux | grep odoo
+$kill -9 13476
+
+
+########## shortest way odoo database, user, password and role creation #######
+
+1. --->sudo apt-get install postgresql
+2. --->sudo su postgres
+3. --->createuser odoo11
+4. --->psql template1
+5. --->alter role odoo11 with password '123456';
+6. --->\q
+7. --->exit
+8. --->sudo -u postgres psql -c 'alter user odoo11 with createdb' postgres
+
+
+### Optional ##
+9.postgres=# DROP USER odoo11;
+
+
+
+
+###################################################################################
+
+### Error for pakageloader
+pip3 uninstall jinja2
+pip3 install Jinja2==2.10.1
+
+#### ModuleNotFoundError: No module named 'werkzeug.contrib'
+pip3 install werkzeug==0.16.0
+
+
+#### how to install sassc? 
+pip3 install libsass==0.12.3
+
+## ERROR odoo11 odoo.addons.base.ir.ir_qweb.assetsbundle: Could not execute command 'lessc'
+--> sudo apt-get install node-less

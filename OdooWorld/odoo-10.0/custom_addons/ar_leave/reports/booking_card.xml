@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Create PDF Report-->
+<template id="report_booking">
+<t t-call="web.html_container">
+    <t t-foreach="docs" t-as="o">
+        <t t-call="web.external_layout">
+            <h2>Sample Booking</h2>
+            SA NO: <t t-esc="o.sa_no"/><br/>
+            CUSTOMER NAME: <t t-esc="o.customer_name"/><br/>
+            BUYER NAME: <t t-esc="o.buyer_name"/><br/>
+            <!-- <t t-esc="o.samplebooking_lines.size"/> -->
+
+
+<div style="margin-top:15px;">
+    <table class="table table-bordered" style="border-color:red;">
+        <thead>
+            <tr>
+            <th>PRODUCT CODE</th>
+            <th>PRODUCT TITLE</th>
+            <th>ITEMS AND MATERIALS</th>
+            <th>SIZE</th>
+            <th>SHAPE</th>
+            <th>MOLD SET</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <t t-foreach="o.samplebooking_lines" t-as="line">
+            <tr>
+            <td>
+            <span t-field="line.product_code"/>
+            </td>
+            <td>
+            <span t-field="line.product_title"/>
+            </td>
+
+            <td>
+            <span t-field="line.items_and_materials"/>
+            </td>
+            <td>
+            <span t-field="line.size"/>
+            </td>
+            <td>
+            <span t-field="line.shape"/>
+            </td>
+            <td>
+            <span t-field="line.mold_set"/>
+            </td>
+
+            </tr>
+            </t>
+        </tbody>
+    </table>
+
+</div>
+
+
+<!--  -->
+        </t>
+    </t>
+</t>
+</template>
+
+</odoo>

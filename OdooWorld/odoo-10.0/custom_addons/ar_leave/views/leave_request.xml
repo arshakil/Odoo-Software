@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- begin -->
+
+<!-- views -->
+
+<!-- form views begin -->
+        <record id="leave_request_form" model="ir.ui.view">
+            <field name="name">leave.request.form</field>
+            <field name="model">leave.request</field>
+            <field name="arch" type="xml">
+            <form string=" leave type off Form">
+            <!--  -->
+
+            <header>
+<!--                <button string="Confirm" type="object" name="action_confirm" states="draft" class="oe_highlight" />-->
+<!--                <button string="Reset to draft" type="object" name="action_confirm" states="confirmed,done" class="oe_highlight"/>-->
+                <button string="Confirm" type="object" name="action_confirm" states="done" class="oe_highlight"/>
+                <button string="Cancel" type="object" name="action_cancel" states="confirm,done" class="oe_highlight"/>
+                <field name="state" widget="statusbar"/>
+            </header>
+
+            <sheet>
+                <group>
+                <group>
+<!--	                <field name="leave_type_off"/>-->
+                    <field name="leave_user_id"/>
+                    <field name="start_date"/>
+                     <field name="end_date"/>
+                </group>
+                <group>
+	                <field name="leave_type"/>
+                     <field name="allotted_days"/>
+                    <field name="remaining_days"/>
+                      <field name="requested_days"/>
+
+                </group>
+                </group>
+
+                <notebook>
+                        <page string="Products"></page>
+                        <page string="Description"></page>
+                        <page string="Other Information"></page>
+                </notebook>
+              </sheet>
+
+
+
+                <!--  -->
+                <!-- for chatter view should add dependancy mail -->
+              <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+                <!-- end chatter view -->
+                </form>
+            </field>
+        </record>
+<!-- form view end -->
+
+
+
+
+
+<!-- Tree views begin -->
+        <record id="ar_leave_tree" model="ir.ui.view">
+            <field name="name">ar_leave.request.tree</field>
+            <field name="model">leave.request</field>
+            <field name="arch" type="xml">
+            <tree string="Leave tree">
+
+             <field name="leave_user_id"/>
+                <field name="leave_type"/>
+                <field name="allotted_days"/>
+                <field name="remaining_days"/>
+                <field name="requested_days"/>
+            </tree>
+            </field>
+        </record>
+<!-- Tree view end -->
+
+
+<!-- end views -->
+
+
+<!-- action of the manufacturer menu -->
+   <record id="action_leave_request" model="ir.actions.act_window">
+            <field name="name">Leave</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">leave.request</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <!-- for default search -->
+            <!-- <field name="context">{"search_default_male":1}</field> -->
+            <!--  -->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+               Create First Leave Request!
+              </p>
+            </field>
+    </record>
+
+
+
+
+
+<!-- MenuItems -->
+<menuitem id="leave_request" name="Leave Request" parent="leave_root" action="action_leave_request" sequence="2"/>
+<!-- end document  -->
+</odoo>

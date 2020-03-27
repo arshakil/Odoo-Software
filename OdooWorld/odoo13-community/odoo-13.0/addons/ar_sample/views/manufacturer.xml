@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- begin -->
+
+<!-- views -->
+
+<!-- form views begin -->
+        <record id="manufacturer_form" model="ir.ui.view">
+            <field name="name">sample.manufacturer.form</field>
+            <field name="model">sample.manufacturer</field>
+            <field name="arch" type="xml">
+
+            <form string="manufacturer Form">
+            <!--  -->
+            <sheet>
+                <group>
+                <group>
+                <field name="product_code"/>
+                <field name="product_id" string="PRODUCT TITLE" can_create="true" can_write="true" modifiers="{}"/>
+				<field name="items_and_materials" string="ITEMS AND MATERIALS" modifiers="{}"/>
+				<field name="size" string="SIZE" modifiers="{}"/>
+				<field name="shape" string="SHAPE" modifiers="{}"/>
+				<field name="logo" string="LOGO" modifiers="{}"/>
+				<field name="logo_ref" string="LOGO REF" modifiers="{}"/>
+				<field name="logo_type" string="LOGO TYPE" modifiers="{}"/>
+                </group>
+                <group>
+				<field name="finish" string="FINISH" modifiers="{}"/>
+				<field name="finish_ref" string="FINISH REF" modifiers="{}"/>
+				<field name="part_b" string="B PART" modifiers="{}"/>
+				<field name="part_c" string="C PART" modifiers="{}"/>
+				<field name="part_d" string="D PART" modifiers="{}"/>
+				<field name="qty" string="QTY(GRS)" modifiers="{}"/>
+				<field name="po" string="PO" modifiers="{}"/>
+				<field name="mold_set" string="MOLD SET" modifiers="{}"/>
+                </group>
+                </group>
+              </sheet>
+                <!--  -->
+                <!-- for chatter view should add dependancy mail -->
+              <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+
+                <!-- end chatter view -->
+                </form>
+            </field>
+        </record>
+<!-- form view end -->
+
+
+
+
+
+<!-- Tree views begin -->
+        <record id="manufacturer_tree" model="ir.ui.view">
+            <field name="name">sample.manufacturer.tree</field>
+            <field name="model">sample.manufacturer</field>
+            <field name="arch" type="xml">
+            <tree string="products tree">
+                <field name="product_code"/>
+                <field name="product_id"/>
+				<field name="items_and_materials"/>
+				<field name="size"/>
+				<field name="shape"/>
+				<field name="logo"/>
+				<field name="logo_ref"/>
+				<field name="logo_type"/>
+            </tree>   
+            </field>
+        </record>
+<!-- Tree view end -->
+
+
+<!-- end views -->
+
+
+<!-- action of the manufacturer menu -->
+   <record id="action_manufacturer" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sample.manufacturer</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <!-- for default search -->
+            <!-- <field name="context">{"search_default_male":1}</field> -->
+            <!--  -->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+               Create First product !
+              </p>
+            </field>
+    </record>
+
+
+
+
+
+<!-- MenuItems -->
+<menuitem id="sample_root" name="Sample" sequence="1" web_icon="om_sample,static/description/icon.png"/>
+<menuitem id="sample_manufacturer" name="Manufacturer" parent="sample_root" action="action_manufacturer" sequence="1"/>
+<!-- <menuitem id="sample_manufacturer2" name="Manufacturer2" parent="sample_root" action="action_manufacturer" sequence="2"/> -->
+
+
+<!-- end document  -->
+</odoo> 
